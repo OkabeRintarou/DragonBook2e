@@ -1,0 +1,20 @@
+graph dag {
+	graph[bgcolor=white];
+	node[color=white];
+
+	p1[label="+"];
+	minus1[label="-"];
+	mul1[label="*"];
+	p2[label="+"];
+	minus2[label="-"];
+	p1 -- minus1;
+	p1 -- mul1;
+	minus1 -- mul1;
+	minus1 -- p2;
+	mul1 -- p2;
+	mul1 -- minus2;
+	p2 -- x;
+	p2 -- y;
+	minus2 -- x;
+	minus2 -- y;
+}
