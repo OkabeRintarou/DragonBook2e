@@ -1,0 +1,17 @@
+graph abstract_syntax_tree {
+	graph[bgcolor=white];
+	node[color=white];
+
+	plus1[label="+"];
+	a[label="a"];
+	b[label="b"];
+	c[label="c"];
+	plus2[label="+"];
+	minus[label="-"];
+
+	plus1 -- a;
+	plus1 -- minus;
+	minus -- plus2;
+	plus2 -- b;
+	plus2 -- c;
+}
