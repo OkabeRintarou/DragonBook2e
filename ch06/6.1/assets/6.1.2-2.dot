@@ -1,0 +1,17 @@
+graph dag {
+	graph[bgcolor=white];
+	node[color=white];
+
+	a[label="a"];
+	b[label="b"];
+	plus1[label="+"];
+	plus2[label="+"];
+	plus3[label="+"];
+
+	plus3 -- a;
+	plus3 -- b;
+	plus2 -- a;
+	plus2 -- plus3;
+	plus1 -- plus2;
+	plus1 -- b;
+}

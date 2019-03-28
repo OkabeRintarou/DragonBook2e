@@ -1,0 +1,22 @@
+graph dag {
+	graph[bgcolor=white];
+	node[color=white];
+
+	a[label="a"];
+	plus1[label="+"];
+	plus2[label="+"];
+	plus3[label="+"];
+	plus4[label="+"];
+	plus5[label="+"];
+
+	plus1 -- plus5;
+	plus1 -- plus2;
+	plus2 -- plus3;
+	plus2 -- plus4;
+	plus3 -- plus5;
+	plus3 -- a;
+	plus4 -- plus5;
+	plus4 -- plus5;
+	plus5 -- a;
+	plus5 -- a;
+}
