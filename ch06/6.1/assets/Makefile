@@ -4,7 +4,7 @@ images=$(src:%.dot=%.svg)
 all:$(images)
 
 %.svg:%.dot
-	dot -T eps -o $@ $<
+	dot -T svg -o $@ $<
 
 .PHONY:clean
 clean:
