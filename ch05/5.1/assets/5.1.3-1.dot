@@ -1,0 +1,88 @@
+graph comment_syntax_tree {
+	graph[bgcolor=white];
+	node[color=white];
+
+    a0[label="digit.lexval=3"];
+    a1[label="F.val=3"];
+    a2[label="ε"];
+    a3[label="T'.syn=T'.inh=3"];
+    a4[label="T'.inh=F.val=3\nT.val=T'.syn=3"];
+
+    a4 -- {a1, a3};
+    a1 -- a0;
+    a3 -- a2;
+
+    b0[label="digit.lexval=4"];
+    b1[label="F.val=4"];
+    b2[label="ε"];
+    b3[label="T'.syn=T'.inh=4"];
+    b5[label="+"];
+    b4[label="T'.inh=F.val=4\nT.val=T'.syn=4"];    
+    b6[label="ε"];
+    b7[label="E1'.syn=E1'.inh=7"];
+    b8[label="E1'.inh=E'.inh + T.val = 3 + 4 = 7\nE'.syn=E1'.syn=7"];
+   
+    b8 -- {b5, b4, b7};
+    b4 -- {b1, b3};
+    b7 -- b6;
+    b1 -- b0;
+    b3 -- b2;
+
+    c1[label="("];
+    c0[label="E'.inh=T.val=3\nE.syn=E'.syn=7"];
+    c0 -- {a4, b8};
+    c2[label=")"];
+    c3[label="F.val=E.val=7"];
+    c3 -- {c1, c0, c2};
+    
+    d0[label="digit.lexval=5"];
+    d1[label="F.val=5"];
+    d2[label="ε"];
+    d3[label="T'.syn=T'.inh=5"];
+    d4[label="T'.inh=F.val=5\nT.val=T'.syn=5"];
+
+    d4 -- {d1, d3};
+    d1 -- d0;
+    d3 -- d2;
+
+    e0[label="digit.lexval=6"];
+    e1[label="F.val=6"];
+    e2[label="ε"];
+    e3[label="T'.syn=T'.inh=6"];
+    e5[label="+"];
+    e4[label="T'.inh=F.val=6\nT.val=T'.syn=6"];    
+    e6[label="ε"];
+    e7[label="E1'.syn=E1'.inh=11"];
+    e8[label="E1'.inh=E'.inh + T.val = 5 + 6 = 11\nE'.syn=E1'.syn=11"];
+   
+    e8 -- {e5, e4, e7};
+    e4 -- {e1, e3};
+    e7 -- e6;
+    e1 -- e0;
+    e3 -- e2;
+    
+    f1[label="("];
+    f0[label="E'.inh=T.val=5\nE.syn=E'.syn=11"];
+    f0 -- {d4, e8};
+    f2[label=")"];
+    f4[label="*"];
+    f3[label="F.val=E.val=11"];
+    f3 -- {f1, f0, f2};
+    f5[label="ε"];
+    f6[label="T1'syn = T1'.inh = 77"];
+    f7[label="T1'.inh=T'.inh * F.val = 7 * 11 = 77\nT'.syn=T1'.syn=77"];
+    f7 -- {f4, f3, f6};
+    f6 -- f5;
+    
+    g0[label="T'.inh=F.val=7\nT.val=T'syn=77"];
+    g1[label="ε"];
+    g2[label="E'.syn=E'.inh=77"];
+    g3[label="E'inh=T.val=77\nE.val=E'.syn=77"];
+    g4[label="n"];
+    g5[label="L.val=E.val=77"];
+    
+    g0 -- {c3, f7};
+    g5 -- {g3, g4};
+    g3 -- {g0, g2};
+    g2 -- g1;
+}

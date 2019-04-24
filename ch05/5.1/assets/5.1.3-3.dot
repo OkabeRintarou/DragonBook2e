@@ -1,0 +1,110 @@
+graph comment_syntax_tree {
+	graph[bgcolor=white];
+	node[color=white];
+
+    a0[label="digit.lexval=9"];
+    a1[label="F.val=9"];
+    a2[label="ε"];
+    a3[label="T'.syn=T'.inh=9"];
+    a4[label="T'.inh=F.val=9\nT.val=T'syn=9"];
+
+    a4 -- {a1, a3};
+    a1 -- a0;
+    a3 -- a2;
+
+    d0[label="("];
+    b0[label="E'.inh=T.val=9\nE.val=E'syn=118"];
+    d1[label=")"];
+    b1[label="+"];
+    b2[label="T'.inh=F.val=8\nT.val=T'.syn=104"];
+    b3[label="E1'.inh=E'.inh+T.val=9+104=113\nE'syn=E1'.syn=118"];
+    
+    b4[label="F.val=8"];
+    b5[label="digit.lexval=8"];
+    b4 -- b5;
+
+    b6[label="T1'.inh=T'.inh * F.val = 8 * 13 = 104\nT'syn=T1'.syn=104"];
+    b7[label="*"];
+    b8[label="F.val=E.val=13"];
+    b9[label="T1'.syn=T1'.inh=104"];
+    b10[label="("];
+    b11[label="E'.inh=T.val=7\nE.val=E'.syn=13"]; // E -> TE'
+    b12[label=")"];
+
+    b8 -- {b10, b11, b12}; 
+
+    b13[label="T'inh=F.val=7\nT.val=T'.syn=7"];
+    b14[label="F.val=7"];
+    b15[label="T'.syn=T'.inh=7"];
+    b16[label="digit.lexval=7"];
+    b100[label="ε"];
+
+    b14 -- b16;
+    b15 -- b100;
+    b13 -- {b14, b15};
+
+    b17[label="E1'.inh=E'.inh + T.val = 7 + 6 = 13\nE'.syn=E1'.syn=13"]; // E' -> +TE1'
+    b18[label="+"];
+    b19[label="T'.inh=F.val=6\nT.val=T'.syn=6"];
+    b20[label="E1'.syn=E1'.inh=13"];
+    b21[label="F.val=6"];
+    b22[label="T'.syn=T'.inh=6"];
+    b23[label="ε"];
+    b24[label="ε"];
+    b25[label="ε"];
+
+    b17 -- {b18, b19, b20};
+    b20 -- b23;
+    b19 -- {b21, b22};
+    b22 -- b24;
+
+    b11 -- {b13, b17};
+    b9 -- b25;
+    b6 -- {b7, b8, b9};
+    
+    
+    c0[label="digit.lexval=5"];
+    c1[label="F.val=5"];
+    c2[label="ε"];
+    c3[label="T'.syn=T'.inh=5"];
+    c5[label="+"];
+    c4[label="T'.inh=F.val=5\nT.val=T'syn=5"];
+    c6[label="ε"];
+    c7[label="E1'.syn=E1'inh=118"];
+    c4 -- {c1, c3};
+    c1 -- c0;
+    c3 -- c2;
+    c7 -- c6;
+    c8[label="E1'.inh=E'.inh+T.val=113 + 5 = 118\nE'.syn=E1'.syn=118"];
+    c8 -- {c5, c4, c7};   
+
+    b3 -- {b1, b2, c8};
+    b2 -- {b4, b6};
+    b0 -- {a4, b3};
+
+
+    d2[label="F.val=E.val=118"];
+    d2 -- {d0, b0, d1};
+
+    d3[label="T'.inh=F.val=118\nT.val=T'syn=472"];
+    d4[label="T1'.inh = T'inh * F.val = 118 * 4 = 472\nT'.syn=T1'.syn=472"];
+    d5[label="*"];
+    d6[label="F.val=4"];
+    d7[label="T1'.syn=T1'.inh = 472"];
+    d8[label="digit.lexval=4"];
+    d9[label="ε"];
+    
+    d6 -- d8;
+    d7 -- d9;
+    d4 -- {d5, d6, d7};
+    d3 -- {d2, d4};
+
+    e0[label="L.val=E.val=472"];
+    e1[label="E'.inh=T.val=472\nE.val=E'.syn=472"];
+    e2[label="n"];
+    e3[label="E'.syn=E'.inh=472"];
+    e4[label="ε"];
+    e0 -- {e1, e2};
+    e1 -- {d3, e3};
+    e3 -- e4;
+}

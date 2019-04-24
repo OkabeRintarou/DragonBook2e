@@ -1,0 +1,56 @@
+graph comment_syntax_tree {
+	graph[bgcolor=white];
+	node[color=white];
+
+    a0[label="L.val=77"];
+    a1[label="E.val=77"];
+    a2[label="n"];
+    a3[label="T.val=77"];
+    a4[label="T1.val=7"];
+    a5[label="*"];
+    a6[label="F.val=11"];
+    a7[label="F.val=7"];
+    a8[label="("];
+    a9[label="E.val=11"];
+    a10[label=")"];
+    a11[label="("];
+    a12[label="E.val=7"];
+    a13[label=")"];
+    a14[label="E1.val=5"];
+    a15[label="+"];
+    a16[label="T.val=6"];
+    a17[label="E1.val=3"];
+    a18[label="+"];
+    a19[label="T.val=4"];
+    a20[label="T.val=5"];
+    a21[label="F.val=6"];
+    a22[label="T.val=3"];
+    a23[label="F.val=4"];
+    a24[label="F.val=5"];
+    a25[label="digit.lexval=6"];
+    a26[label="F.val=3"];
+    a27[label="digit.lexval=4"];
+    a28[label="digit.lexval=5"];
+    a29[label="digit.lexval=3"];
+
+    a0 -- a1 
+    a0 -- a2;
+    a1 -- a3;
+    a3 -- {a4, a5, a6};
+    a4 -- a7;
+    a7 -- {a11,a12,a13};
+    a12 -- {a17, a18, a19};
+    a17 -- a22;
+    a19 -- a23;
+    a22 -- a26;
+    a26 -- a29;
+    a23 -- a27;
+    a6 -- {a8,a9,a10};
+    a9 -- {a14,a15,a16};
+    a14 -- a20;
+    a20 -- a24;
+    a24 -- a28;
+    a16 -- a21;
+    a21 -- a25;
+    
+}

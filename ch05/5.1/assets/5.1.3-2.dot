@@ -1,0 +1,74 @@
+graph comment_syntax_tree {
+	graph[bgcolor=white];
+	node[color=white];
+
+    a0[label="digit.lexval=4"];
+    a1[label="F.val=4"];
+    a2[label="ε"];
+    a3[label="T'.syn=T'.inh=4"];
+    a4[label="T'.inh=F.val=4\nT.val=T'.syn=4"];
+
+    a4 -- {a1, a3};
+    a1 -- a0;
+    a3 -- a2;
+
+    b0[label="digit.lexval=5"];
+    b1[label="F.val=5"];
+    b2[label="ε"];
+    b3[label="T'.syn=T'.inh=5"];
+    b5[label="+"];
+    b4[label="T'.inh=F.val=5\nT.val=T'.syn=5"];
+    b6[label="E1'.syn=E1'.inh=9"];
+    b8[label="ε"];
+    b7[label="E1'.inh=E'.inh + T.val = 4 + 5 = 9\nE'.syn=E1'.syn=9"];
+    b4 -- {b1, b3};
+    b1 -- b0;
+    b3 -- b2;
+    b7 -- {b5, b4, b6};
+    b6 -- b8;
+
+    b10[label="("];
+    b9[label="E'.inh=T.val=4\nE.val=E'.syn=9"];
+    b9 -- {a4, b7};
+    b11[label=")"];
+    
+    c1[label="*"];
+    c0[label="F.val=E.val=9"];
+    c0 -- {b10, b9, b11};
+    c2[label="T1'.syn=T1'.inh=54"];
+    c3[label="ε"];
+    c7[label="*"];
+    c6[label="F.val=3"];
+    c4[label="T1'.inh=T'.inh * F.val = 6 * 9 = 54\nT'.syn=T1'.syn=54"];
+    c4 -- {c1, c0, c2};
+    c2 -- c3;
+        
+
+    d0[label="*"];
+    d1[label="F.val=2"];
+    c5[label="digit.lexval=3"];    
+    c8[label="T1'.inh=T'.inh * F.val=2 * 3 = 6\nT'.syn=T1'.syn=54"];
+    c8 -- {c7, c6, c4};
+    c6 -- c5;
+
+    d6[label="digit.lexval=1"];
+    d5[label="F.val=1"];
+    d3[label="digit.lexval=2"];
+    d4[label="T1'.inh=T'.inh * F.val = 1 * 2 = 2\nT'.syn=T1'.syn=54"];
+    d4 -- {d0, d1, c8};
+    d5 -- d6;
+    d1 -- d3;
+    
+    d7[label="T'.inh=F.val=1\nT.val=T'.syn=54"];
+    d7 -- {d5, d4};
+    
+    e0[label="ε"];
+    e1[label="E'.syn=E'.inh=54"];
+    e2[label="E'.inh=T.val=54\nE.val=E'.syn=54"]
+    e3[label="n"];
+    e4[label="L.val=E.val=54"];
+    
+    e4 -- {e2, e3};
+    e2 -- {d7, e1};
+    e1 -- e0;
+}
