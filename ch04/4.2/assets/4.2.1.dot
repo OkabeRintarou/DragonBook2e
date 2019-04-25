@@ -1,0 +1,25 @@
+graph syntax_tree {
+	graph[bgcolor=white];
+	node[color=white];
+
+	Stop[label="S"];
+	S1[label="S"];
+	S2[label="S"];
+	mul[label="*"];
+	S3[label="S"];
+	S4[label="S"];
+	plus[label="+"];
+	a1[label="a"];
+	a2[label="a"];
+	a3[label="a"];
+
+	Stop -- S1;
+	Stop -- S2;
+	Stop -- mul;
+	S1 -- S3;
+	S1 -- S4;
+	S1 -- plus;
+	S2 -- a1;
+	S3 -- a2;
+	S4 -- a3;
+}
